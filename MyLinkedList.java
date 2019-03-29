@@ -32,24 +32,11 @@ public class MyLinkedList<E> {
     return true;
   }
 
-  public E removeFront(int index) {
-    if (index < 0 || index > size) {
-      throw new IndexOutOfBoundsException();
-    }
-    Node old;
-    if (index == 0) {
-      old = start;
-      start = old.next();
-      start.setPrev(null);
-    } else if (index == size - 1) {
-        old = end;
-        end = old.prev();
-        end.setNext(null);
-    } else {
-      old = getNode(index);
-      old.next().setPrev(old.prev());
-      old.prev().setNext(old.next());
-    }
+  public E removeFront() {
+    if (size == 0) throw new IndexOutOfBoundsException();
+    Node old = start;
+    start = old.next();
+    start.setPrev(null);
     size--;
     return old.value();
   }
