@@ -79,10 +79,6 @@ public class MyLinkedList<E> {
     return current;
   }
 
-  public static void main(String[] args) {
-
-  }
-
   private class Node {
     private E data;
     private Node next, prev;
