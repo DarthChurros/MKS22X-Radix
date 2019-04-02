@@ -34,6 +34,13 @@ public class MyLinkedList<E> {
 
   public E removeFront() {
     if (size == 0) throw new IndexOutOfBoundsException();
+    if (size == 1) {
+      E ans = start.value();
+      start = null;
+      end = null;
+      size = 0;
+      return ans;
+    }
     Node old = start;
     start = old.next();
     start.setPrev(null);
