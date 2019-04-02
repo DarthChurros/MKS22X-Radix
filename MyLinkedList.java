@@ -57,10 +57,10 @@ public class MyLinkedList<E> {
       end.setNext(other.start);
       other.start.setPrev(end);
       end = other.end;
+      size += other.size();
     }
     other.end = null;
     other.start = null;
-    size += other.size();
   }
 
   public String toString() {
