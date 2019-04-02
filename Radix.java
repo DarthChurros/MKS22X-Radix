@@ -15,6 +15,11 @@ public class Radix {
         if (item < 0) buckets[9-digit].add(item);
         else buckets[digit+10].add(item);
       }
+      list = new MyLinkedList<Integer>();
+      for (int i = 0; i < 20; i++) {
+        list.extend(buckets[i]);
+        buckets[i] = new MyLinkedList<Integer>();
+      }
     }
     int i = 0;
     while (list.size() > 0) data[i++] = list.removeFront();
