@@ -8,7 +8,11 @@ public class Radix {
     for (int i = 0; i < data.length; i++) list.add(data[i]);
     for (int i = 0; i < 20; i++) buckets[i] = new MyLinkedList<Integer>();
     int place = 0;
-    while (buckets[9].size() + buckets[10].size() < data.length) {
+    int maxDigits = 0;
+    for (int i = 0; i < data.length; i++) {
+      if (Math.log10(data[i]) > maxDigits) maxDigits = (int)Math.log10(data[i]);
+    }
+    while (place < maxDigits) {
       while (list.size() > 0) {
         int item = list.removeFront();
         int digit = (item/(int)Math.pow(10,place++))%10;
