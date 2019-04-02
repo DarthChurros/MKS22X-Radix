@@ -12,18 +12,21 @@ public class Radix {
     for (int i = 0; i < data.length; i++) {
       if (Math.log10(data[i]) > maxDigits) maxDigits = (int)Math.log10(data[i]);
     }
-    while (place < maxDigits) {
+    while (place <= maxDigits) {
       while (list.size() > 0) {
         int item = list.removeFront();
-        int digit = (item/(int)Math.pow(10,place++))%10;
+        int digit = (item/(int)Math.pow(10,place))%10;
         if (item < 0) buckets[9-digit].add(item);
         else buckets[digit+10].add(item);
       }
+      //System.out.println(Arrays.deepToString(buckets));
       list = new MyLinkedList<Integer>();
       for (int i = 0; i < 20; i++) {
         list.extend(buckets[i]);
         buckets[i] = new MyLinkedList<Integer>();
       }
+      place++;
+      //System.out.println(list);
     }
     int i = 0;
     while (list.size() > 0) data[i++] = list.removeFront();
