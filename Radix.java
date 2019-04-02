@@ -5,13 +5,21 @@ public class Radix {
     @SuppressWarnings({"unchecked", "rawtypes"})
     MyLinkedList<Integer>[] buckets = new MyLinkedList[20];
     MyLinkedList<Integer> list = new MyLinkedList<Integer>();
-    for (int i = 0; i < data.length; i++) list.add(data[i]);
     for (int i = 0; i < 20; i++) buckets[i] = new MyLinkedList<Integer>();
-    int place = 0;
+    int place = 1;
     int max = 0;
     for (int i = 0; i < data.length; i++) {
       if (data[i] > max) max = data[i];
+      int item = data[i];
+      int digit = (Math.abs(item)/(int)Math.pow(10,place))%10;
+      if (item < 0) buckets[9-digit].add(item);
+      else buckets[digit+10].add(item);
     }
+    for (int i = 0; i < 20; i++) {
+      list.extend(buckets[i]);
+      buckets[i] = new MyLinkedList<Integer>();
+    }
+    place = 10;
     while (place <= max) {
       while (list.size() > 0) {
         int item = list.removeFront();
