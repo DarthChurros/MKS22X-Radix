@@ -61,6 +61,7 @@ public class MyLinkedList<E> {
     }
     other.end = null;
     other.start = null;
+    other.size = 0;
   }
 
   public String toString() {
