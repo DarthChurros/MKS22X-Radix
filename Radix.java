@@ -31,7 +31,7 @@ public class Radix {
       list = new MyLinkedList<Integer>();
       for (int i = 0; i < 20; i++) {
         list.extend(buckets[i]);
-        buckets[i] = new MyLinkedList<Integer>();
+        //buckets[i] = new MyLinkedList<Integer>();
       }
       place*=10;
       //System.out.println("list: "+list);
@@ -41,7 +41,7 @@ public class Radix {
   }
 
   public static void main(String[] args) {
-    int[] data = new int[]{103, 45, -1, 241, 861, 359, 175, 920, 4};
+    int[] data = new int[]{103, 45, -19, 241, 861, 359, 175, 920, 4};
     System.out.println("unsorted: "+Arrays.toString(data));
     radixsort(data);
     System.out.println("sorted: "+Arrays.toString(data));
