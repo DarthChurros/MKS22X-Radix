@@ -16,6 +16,7 @@ public class MyLinkedList<E> {
     size = 0;
     start = null;
     end = null;
+    current = null;
   }
 
   public boolean add(E value) {
