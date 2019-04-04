@@ -30,7 +30,7 @@ public class Radix {
         else buckets[digit+10].add(item);
       }
       //System.out.println(Arrays.deepToString(buckets));
-      list = new MyLinkedList<Integer>();
+      list.clear();
       for (int i = 0; i < 20; i++) {
         list.extend(buckets[i]);
         //buckets[i] = new MyLinkedList<Integer>();
