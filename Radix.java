@@ -21,8 +21,10 @@ public class Radix {
     }
     int place = 10;
     while (place <= max) {
-      while (list.size() > 0) {
-        int item = list.removeFront();
+      //System.out.println("list: "+list);
+      while (list.hasNext()) {
+        int item = list.next();
+        //System.out.println(item);
         int digit = (Math.abs(item)/place)%10;
         if (item < 0) buckets[9-digit].add(item);
         else buckets[digit+10].add(item);
@@ -34,10 +36,10 @@ public class Radix {
         //buckets[i] = new MyLinkedList<Integer>();
       }
       place*=10;
-      //System.out.println("list: "+list);
+      list.reset();
     }
     int i = 0;
-    while (list.size() > 0) data[i++] = list.removeFront();
+    while (list.hasNext()) data[i++] = list.next();
   }
 
   public static void main(String[] args) {
