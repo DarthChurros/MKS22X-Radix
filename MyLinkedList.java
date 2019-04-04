@@ -69,10 +69,10 @@ public class MyLinkedList<E> {
     return current != end;
   }
 
-  public Node next() {
+  public E next() {
     if (current.next() == null) throw new NoSuchElementException();
     current = current.next();
-    return current.prev();
+    return current.prev().value();
   }
 
   public void reset() {
