@@ -75,6 +75,10 @@ public class MyLinkedList<E> {
     return current.prev();
   }
 
+  public void reset() {
+    current = start;
+  }
+
   public String toString() {
     String ans = "[";
     try {
