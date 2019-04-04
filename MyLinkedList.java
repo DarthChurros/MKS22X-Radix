@@ -2,8 +2,7 @@ import java.util.NoSuchElementException;
 
 public class MyLinkedList<E> {
   private int size;
-  private Node start, end;
-  private Node current;
+  private Node start, end, current;
 
   public MyLinkedList() {
     size = 0;
@@ -23,7 +22,6 @@ public class MyLinkedList<E> {
     if (size == 0) {
       start = new Node(value);
       end = start;
-      current = start;
       size++;
       return true;
     }
@@ -63,6 +61,7 @@ public class MyLinkedList<E> {
     }
     other.end = null;
     other.start = null;
+    reset();
   }
 
   public boolean hasNext() {
@@ -70,13 +69,14 @@ public class MyLinkedList<E> {
   }
 
   public E next() {
-    if (current.next() == null) throw new NoSuchElementException();
-    current = current.next();
-    return current.prev().value();
+    if (current != null && current.next() == null) throw new NoSuchElementException();
+    if (current == null) current = start;
+    else current = current.next();
+    return current.value();
   }
 
   public void reset() {
-    current = start;
+    current = null;
   }
 
   public String toString() {
